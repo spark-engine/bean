@@ -1,8 +1,8 @@
 {
   "name": "bean",
   "description": "A small, fast, framework-agnostic event manager",
-  "version": "1.0.14",
-  "homepage": "https://github.com/fat/bean",
+  "version": "1.0.15",
+  "homepage": "https://github.com/compose-ui/bean",
   "authors": [
     "Jacob Thornton <@fat>",
     "Rod Vagg <@rvagg>",
@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/fat/bean.git"
+    "url": "https://github.com/compose-ui/bean.git"
   },
   "keywords": [
     "ender",

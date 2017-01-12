@@ -21,7 +21,7 @@ Bean has five main methods, each packing quite a punch.
 
 --------------------------------------------------------
 <a name="on"></a>
-### on(element, eventType[, selector], handler[, args ])
+### on(element, eventType[, selector], handler[, args ], [options])
 <code>bean.on()</code> lets you attach event listeners to both elements and objects.
 
 **Arguments**
@@ -31,6 +31,8 @@ Bean has five main methods, each packing quite a punch.
   * **selector** (optional String) - a CSS DOM Element selector string to bind the listener to child elements matching the selector
   * **handler** (Function) - the callback function
   * **args** (optional) - additional arguments to pas to the callback function when triggered
+  * **options** (optional) - options, may include:
+      * **useCapture**: set to true to pass `useCapture=true` to `addEventListener` (defaults to false)
 
 Optionally, event types and handlers can be passed in an object of the form `{ 'eventType': handler }` as the second argument.
 
@@ -39,6 +41,9 @@ Optionally, event types and handlers can be passed in an object of the form `{ '
 ```js
 // simple
 bean.on(element, 'click', handler);
+
+// register the event during capture phase instead of bubbling
+bean.on(element, 'click', handler, {useCapture: true});
 
 // optional arguments passed to handler
 bean.on(element, 'click', function(e, o1, o2) {
@@ -121,6 +126,8 @@ bean.off(element, 'click.fat.ded');     // remove nothing
   * **element / object** (DOM Element or Object) - an HTML DOM element or any JavaScript Object
   * **event type(s)** (optional String) - an event (or multiple events, space separated) to remove
   * **handler** (optional Function) - the specific callback function to remove
+  * **options** (optional) - options, may include:
+      * **useCapture**: set to true to pass `useCapture=true` to `addEventListener` (defaults to false)
 
 Optionally, event types and handlers can be passed in an object of the form `{ 'eventType': handler }` as the second argument, just like `on()`.
 
@@ -129,6 +136,9 @@ Optionally, event types and handlers can be passed in an object of the form `{ '
 ```js
 // remove a single event handlers
 bean.off(element, 'click', handler);
+
+// remove an event handler that was added with `useCapture: true`
+bean.off(element, 'click', handler, {useCapture: true});
 
 // remove all click handlers
 bean.off(element, 'click');
