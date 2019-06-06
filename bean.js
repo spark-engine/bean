@@ -4,9 +4,11 @@
   * MIT license
   */
 (function (name, context, definition) {
-  if (typeof module != 'undefined' && module.exports) module.exports = definition()
+  // Fallback for node
+  if (typeof window === 'undefined') { return null; }
+  if (typeof module != 'undefined' && module.exports) module.exports = definition(name, context)
   else if (typeof define == 'function' && define.amd) define(definition)
-  else context[name] = definition()
+  else context[name] = definition(name, context)
 })('bean', this, function (name, context) {
   name    = name    || 'bean'
   context = context || this
